@@ -1,0 +1,27 @@
+{%extends 'crud_app/base.html'%}
+
+{%block content%}
+
+<body>
+
+    <div class="container text-center bg-light shadow-md p-5">
+        <h2>Login to your account</h2>
+        <hr>
+        <br>
+
+        <form method="POST" autocomplete="off">
+            {%csrf_token%}
+            {{form.as_p}}
+            <br>
+            <button type="submit" class="btn btn-primary w-50 p-2 btn-block">Login</button>
+
+        </form>
+        <br>
+        <div class="text-center">
+            <span> Don't have an Account?   <a href="{%url 'register'%}"> Register</a></span>
+        </div>
+       
+    </div>
+
+</body>
+{%endblock%}
