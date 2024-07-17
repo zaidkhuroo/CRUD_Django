@@ -5,3 +5,7 @@ h1{
 .style-nav{
     padding-left: 20px;
 }
+.form-view{
+    width: 500px;
+    border-radius: 50px;
+}
