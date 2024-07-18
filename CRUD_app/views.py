@@ -4,6 +4,7 @@ from .forms import CreateUser,LoginUser
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -34,10 +35,14 @@ def login(request):
             
             if user is not None:
                 auth.login(request, user) 
-            # return redirect('')
+            return redirect('dashboard')
     context={'form':form}    
     return render(request, 'crud_app/login.html', context=context)
 
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+@login_required(login_url='login') #this will help us to let only authenticated users toi see the dashboard
+def dashboard(request):
+    return render(request, 'crud_app/dashboard.html')
