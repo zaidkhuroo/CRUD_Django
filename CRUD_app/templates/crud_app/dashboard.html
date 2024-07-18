@@ -2,5 +2,15 @@
 {%block content%}
 <div class="text-center">
     <h2>Welcome aboard!</h2>
+
+    {% for record in records %}
+
+    <!-- <p>ID:{{record.id}}</p>
+    <br> -->
+    <p>First Name:{{record.first_name}}</p>
+    
+    <p>Last Name:{{record.last_name}}</p> 
+
+    {%endfor%}
 </div>
 {%endblock%}

@@ -6,6 +6,8 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 
+from.models import Entries
+
 # Create your views here.
 def index(request):
     # return HttpResponse("Hello!")
@@ -43,6 +45,8 @@ def logout(request):
     auth.logout(request)
     return redirect('login')
 
-@login_required(login_url='login') #this will help us to let only authenticated users toi see the dashboard
+@login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
 def dashboard(request):
-    return render(request, 'crud_app/dashboard.html')
+    my_entries=Entries.objects.all()
+    context={'records': my_entries}
+    return render(request, 'crud_app/dashboard.html', context=context)
