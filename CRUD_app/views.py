@@ -50,3 +50,5 @@ def dashboard(request):
     my_entries=Entries.objects.all()
     context={'records': my_entries}
     return render(request, 'crud_app/dashboard.html', context=context)
+
+#add a record
