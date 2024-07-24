@@ -3,14 +3,50 @@
 <div class="text-center">
     <h2>Welcome aboard!</h2>
 
-    {% for record in records %}
+    <hr>
+    
 
     <!-- <p>ID:{{record.id}}</p>
     <br> -->
-    <p>First Name:{{record.first_name}}</p>
-    
-    <p>Last Name:{{record.last_name}}</p> 
 
-    {%endfor%}
+    <table class="table table-light table-hover">
+      
+
+        <thead class="table-light">
+            <tr>
+        
+            <th scope="col">ID</th> 
+
+            <th scope="col">Content</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+
+            <th scope="col">View</th>
+            
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% if records %}
+            {% for record in records %}
+            <tr>
+                <td>{{record.id}}</td>
+                <td>{{record.title}}</td>
+                <td>{{record.first_name}}</td>
+                <td>{{record.last_name}}</td>
+                <td>{{record.content}}</td>
+                <td>{{record.date}}</td>
+            </tr>    
+            {%endfor%}
+            {%endif%}
+
+        </tbody>
+       
+    </table>
+   
 </div>
 {%endblock%}
