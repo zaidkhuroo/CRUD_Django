@@ -1,0 +1,27 @@
+{% extends 'crud_app/base.html' %}
+{%load crispy_forms_tags%}
+
+{%block content%}
+
+
+<div class="card">
+    <div class="card-header">
+        {{record.first_name | upper}}
+        {{record.last.name}}
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>ID: {{record.id}}</p>
+            <p>Title: {{record.title}}</p>
+            <p>First Name: {{record.first_name}}</p>
+            <p>Last Name: {{record.last_name}}</p>
+            <p> Content:{{record.content}}</p>
+            <p>Date: {{record.date}} </p>
+        </blockquote>
+    </div>
+</div>
+<a href="{%url 'dashboard'%}" class="btn btn-secondary">Back</a>
+<a href="{%url 'update_record' record.id%}" class="btn btn-info">Update</a>
+<a href="{%url ''%}" class="btn btn-danger">Delete</a>
+
+{%endblock%}

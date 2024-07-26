@@ -63,3 +63,24 @@ def add_record(request):
             return redirect('dashboard')
     context={'form':form}
     return render(request, 'crud_app/add_record.html', context=context)
+
+
+#update record
+@login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
+def update_record(request, pk): #this method will take 2 arguments (the request and the primary key id)
+    record=Entries.objects.get(id=pk)
+    form= Update_record(instance=record)
+    if request.method=='POST':
+        form=Update_record(request.POST,instance=record) 
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    context={'form':form}
+    return render(request, 'crud_app/update_record.html', context=context)
+
+#view record
+@login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
+def view_record(request, pk): #this method will take 2 arguments (the request and the primary key id)
+    all_records=Entries.objects.get(id=pk)
+    context={'record':all_records}
+    return render(request, 'crud_app/view_record.html', context=context)

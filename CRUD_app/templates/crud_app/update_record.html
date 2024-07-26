@@ -1,0 +1,21 @@
+{% extends 'crud_app/base.html' %}
+{%load crispy_forms_tags%}
+
+{%block content%}
+
+<div class="container bg-light shadow-md p-5 w-50">
+    <h2>Update Record</h2>
+    <hr>
+    <br>
+
+    <form method="POST" autocomplete="off">
+        {%csrf_token%}
+        {{form | crispy }}
+        <br>
+        <button type="submit" class="btn btn-primary w-100 p-2 btn-block">Update</button>
+
+    </form>
+
+</div>
+
+{%endblock%}

@@ -40,6 +40,7 @@
                 <td>{{record.last_name}}</td>
                 <td>{{record.content}}</td>
                 <td>{{record.date}}</td>
+                <td><a href="{% url 'view_record' record.id %}">View</a></td>
             </tr>    
             {%endfor%}
             {%endif%}
