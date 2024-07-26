@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse 
-from .forms import CreateUser,LoginUser
+from .forms import CreateUser,LoginUser,Add_record,Update_record
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
@@ -52,3 +52,14 @@ def dashboard(request):
     return render(request, 'crud_app/dashboard.html', context=context)
 
 #add a record
+@login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
+def add_record(request):
+    form=Add_record()
+    if request.method=='POST':
+        form=Add_record(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    context={'form':form}
+    return render(request, 'crud_app/add_record.html', context=context)

@@ -12,6 +12,8 @@ from django.contrib.auth.forms import AuthenticationForm
 #importing username and password widget
 from django.forms.widgets import PasswordInput, TextInput
 
+from .models import Entries
+
 #creating user
 class CreateUser(UserCreationForm):
     class Meta:
@@ -23,3 +25,14 @@ class LoginUser(AuthenticationForm):
     username=forms.CharField(widget=TextInput())
     password=forms.CharField(widget=PasswordInput())
     
+#add record
+class Add_record(forms.ModelForm):
+    class Meta:
+        model=Entries
+        fields=['title','content','first_name','last_name',]
+        
+#update record
+class Update_record(forms.ModelForm):
+    class Meta:
+        model=Entries
+        fields=['title','content','first_name','last_name',]
