@@ -84,3 +84,10 @@ def view_record(request, pk): #this method will take 2 arguments (the request an
     all_records=Entries.objects.get(id=pk)
     context={'record':all_records}
     return render(request, 'crud_app/view_record.html', context=context)
+
+#delete record
+@login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
+def delete_record(request, pk): #this method will take 2 arguments (the request and the primary key id)
+     record=Entries.objects.get(id=pk)
+     record.delete()
+     return redirect('dashboard')
