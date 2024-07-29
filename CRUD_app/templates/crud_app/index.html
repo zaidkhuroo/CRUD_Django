@@ -3,11 +3,19 @@
 
 <body>
     <div class="text-center">
-        <h2>CRUD</h2>
+        <h2>CRUD-App</h2>
+        <hr>
+       
+        {% if user.is_authenticated %}
+        <h5>Hello {{ user }}, Click the button to CRUD records.</h5>
+        <a class="btn btn-primary" type="button" href="{% url 'dashboard' %}">My Records</a>
+        {%else%}
         <br>
-        <h5>Records are here</h5>
+        <h5>Hello user, Login/Register to CRUD Records</h5>
         <hr>
         <a class="btn btn-primary" type="button" href="{% url 'register' %}">Register</a>
+        <a class="btn btn-success" type="button" href="{% url 'login'%}">Login</a>
+        {%endif%}
     </div>
 </body>
 {%endblock%}
