@@ -1,0 +1,11 @@
+h1{
+    color: rgb(62, 161, 26);
+    font-size: 200px;
+}
+.style-nav{
+    padding-left: 20px;
+}
+.form-view{
+    width: 500px;
+    border-radius: 50px;
+}
