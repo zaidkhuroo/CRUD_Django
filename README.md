@@ -41,15 +41,17 @@ Use SSH to clone the repository:
     python3 -m venv env
     source env/bin/activate  # On Windows use `env\Scripts\activate`
 
-
-3. **Apply migrations:**
+3. **Install Dependencies:**
+   ```bash
+    pip install -r requirements.txt
+   
+4. **Apply migrations:**
    ```bash
     python manage.py makemigrations
     python manage.py migrate
 
-4. **Run the development server:**
+5. **Run the development server:**
    ```bash
     python manage.py runserver
 
-5. **Access the application:**
 Open your web browser and go to http://127.0.0.1:8000/
