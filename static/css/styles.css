@@ -1,7 +1,4 @@
-h1 {
-    color: rgb(62, 161, 26);
-    font-size: 200px;
-}
+
 
 .style-nav {
     padding-left: 20px;
@@ -11,8 +8,6 @@ h1 {
     width: 500px;
     border-radius: 50px;
 }
-
-#dashboard-table {
-    width: 500px;
+.text-color{
+    color: rgb(255, 255, 255);
 }
-

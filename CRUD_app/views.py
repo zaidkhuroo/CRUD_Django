@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse 
 from .forms import CreateUser,LoginUser,Add_record,Update_record
+from django.contrib import messages
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
@@ -8,11 +9,12 @@ from django.contrib.auth.decorators import login_required
 
 from.models import Entries
 
-# Create your views here.
+# Index page view
 def index(request):
     # return HttpResponse("Hello!")
     return render(request, 'crud_app/index.html')
 
+#user registration
 def register(request):
     form = CreateUser()
     if request.method=='POST':
@@ -20,10 +22,13 @@ def register(request):
         
         if form.is_valid():
             form.save()
+            
+            messages.success(request, "Account Created")
             return redirect('login') #this will redirect page to the login page once the user is created
     context={'form':form}    
     return render(request, 'crud_app/registration.html', context=context)
 
+#user login
 def login(request):
     form = LoginUser()
     if request.method=='POST':
@@ -35,15 +40,19 @@ def login(request):
             user= authenticate(request, username=username, password=password)
             
             if user is not None:
-                auth.login(request, user) 
+                auth.login(request, user)
+                messages.success(request, "Logged in Successfully") 
             return redirect('dashboard')
     context={'form':form}    
     return render(request, 'crud_app/login.html', context=context)
 
+#user logout
 def logout(request):
     auth.logout(request)
+    messages.success(request, "You've logged out")
     return redirect('login')
 
+#show a single record
 @login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
 def dashboard(request):
     my_entries=Entries.objects.all()
@@ -59,6 +68,7 @@ def add_record(request):
         
         if form.is_valid():
             form.save()
+            messages.success(request, "Record Created")
             return redirect('dashboard')
     context={'form':form}
     return render(request, 'crud_app/add_record.html', context=context)
@@ -73,6 +83,7 @@ def update_record(request, pk): #this method will take 2 arguments (the request 
         form=Update_record(request.POST,instance=record) 
         if form.is_valid():
             form.save()
+            messages.success(request, "Record Updated")
             return redirect('dashboard')
     context={'form':form}
     return render(request, 'crud_app/update_record.html', context=context)
@@ -89,4 +100,5 @@ def view_record(request, pk): #this method will take 2 arguments (the request an
 def delete_record(request, pk): #this method will take 2 arguments (the request and the primary key id)
      record=Entries.objects.get(id=pk)
      record.delete()
+     messages.error(request, "Record Deleted")
      return redirect('dashboard')
