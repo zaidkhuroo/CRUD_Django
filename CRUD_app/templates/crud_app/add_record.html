@@ -12,7 +12,8 @@
         {%csrf_token%}
         {{form | crispy }}
         <br>
-        <button type="submit" class="btn btn-primary w-100 p-2 btn-block">Add</button>
+        <button type="submit" class="btn btn-primary w-75 p-2 btn-block btn-sm custom-width">Add &nbsp; <i class="fa-solid fa-plus"></i></button>
+        <a href="{%url 'dashboard'%}" class="btn btn-secondary">Back &nbsp; <i class="fa-solid fa-arrow-left"></i></a>
 
     </form>
 

@@ -4,7 +4,7 @@
 {%block content%}
 
 
-<div class="card">
+<div class="card m-4 ">
     <div class="card-header">
         {{record.first_name | upper}}
         {{record.last.name}}
@@ -20,8 +20,9 @@
         </blockquote>
     </div>
 </div>
-<a href="{%url 'dashboard'%}" class="btn btn-secondary">Back</a>
-<a href="{%url 'update_record' record.id%}" class="btn btn-info">Update</a>
-<a href="{%url 'delete_record' record.id %}" class="btn btn-danger">Delete</a>
-
+<div class="updater m-4">
+<a href="{%url 'dashboard'%}" class="btn btn-secondary">Back &nbsp; <i class="fa-solid fa-arrow-left"></i></a>
+<a href="{%url 'update_record' record.id%}" class="btn btn-info">Update &nbsp; <i class="fa-regular fa-pen-to-square"></i></a>
+<a href="{%url 'delete_record' record.id %}" class="btn btn-danger">Delete &nbsp; <i class="fa-solid fa-trash"></i></a>
+</div>
 {%endblock%}

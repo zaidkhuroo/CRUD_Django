@@ -1,15 +1,15 @@
 {% extends 'crud_app/base.html' %}
 {%block content%}
-<div class="text-center">
+<div class="text-center m-2">
     <h2>Welcome aboard!</h2>
 
     <hr>
-    <a class="btn btn-outline-primary btn-sm m-1" href="{%url 'add_record'%}">Create Record</a>
+    <a class="btn btn-outline-success btn-sm m-2" href="{%url 'add_record'%}">Create New Record &nbsp; <i class="fa-solid fa-plus"></i></a>
 
     <!-- <p>ID:{{record.id}}</p>
     <br> -->
 
-    <table class="table table-light table-hover m-1">
+    <table class="table table-light table-hover ">
       
 
         <thead class="table-dark">
@@ -39,7 +39,7 @@
                 <td>{{record.last_name}}</td>
                 <td>{{record.content}}</td>
                 <td>{{record.date}}</td>
-                <td><a href="{% url 'view_record' record.id %}">View</a></td>
+                <td><a class="btn btn-info btn-sm" href="{% url 'view_record' record.id %}"><i class="fa-solid fa-eye"></i></a></td>
             </tr>    
             {%endfor%}
             {%endif%}
