@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 from.models import Entries
 
-# Index page view
+# Index page view.
 def index(request):
     # return HttpResponse("Hello!")
     return render(request, 'crud_app/index.html')
