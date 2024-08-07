@@ -28,7 +28,7 @@ def register(request):
     context={'form':form}    
     return render(request, 'crud_app/registration.html', context=context)
 
-#user login
+#user login method
 def login(request):
     form = LoginUser()
     if request.method=='POST':
