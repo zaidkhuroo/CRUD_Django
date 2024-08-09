@@ -27,7 +27,6 @@ Make sure you have the following installed on your system:
 - virtualenv (optional, but recommended)
 
 
-
 ## Installation
 
 1. **Clone the repository:**
