@@ -78,18 +78,23 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'crud',
+#         'USER': 'cruduser',
+#         'PASSWORD': 'mypassword',
+#         'HOST': 'localhost',  # Set to 'localhost' if the database is on the same machine
+#         'PORT': '',  # Set to '' for default
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'crud',
-        'USER': 'cruduser',
-        'PASSWORD': 'mypassword',
-        'HOST': 'localhost',  # Set to 'localhost' if the database is on the same machine
-        'PORT': '',  # Set to '' for default
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -130,4 +135,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'CRUD_app.CustomUser'
 

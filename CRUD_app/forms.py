@@ -1,24 +1,14 @@
-from django.contrib.auth.forms import UserCreationForm #provided by django to create users
-
-#to use UserCreationForm we need user model for that which will provide fields and this will be also impoirted from django
-from django.contrib.auth.models import User
-
-#using forms
+from django.contrib.auth.forms import UserCreationForm 
 from django import forms
-
-#importing djangos default authentication form 
 from django.contrib.auth.forms import AuthenticationForm
-
-#importing username and password widget
 from django.forms.widgets import PasswordInput, TextInput
-
-from .models import Entries
+from .models import Entries, CustomUser
 
 #creating user
 class CreateUser(UserCreationForm):
     class Meta:
-        model=User
-        fields=['username','password','password2']
+        model=CustomUser
+        fields=['username','full_name']
 
 #login user
 class LoginUser(AuthenticationForm):
@@ -29,10 +19,10 @@ class LoginUser(AuthenticationForm):
 class Add_record(forms.ModelForm):
     class Meta:
         model=Entries
-        fields=['title','content','first_name','last_name',]
+        fields=['title','content','status']
         
 #update record
 class Update_record(forms.ModelForm):
     class Meta:
         model=Entries
-        fields=['title','content','first_name','last_name',]
+        fields=['title','content','status']

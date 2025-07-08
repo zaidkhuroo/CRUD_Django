@@ -55,7 +55,7 @@ def logout(request):
 #show a single record
 @login_required(login_url='login') #this decorator will let only authenticated users to see the dashboard
 def dashboard(request):
-    my_entries=Entries.objects.all()
+    my_entries = Entries.objects.filter(user=request.user)
     context={'records': my_entries}
     return render(request, 'crud_app/dashboard.html', context=context)
 
@@ -67,11 +67,14 @@ def add_record(request):
         form=Add_record(request.POST)
         
         if form.is_valid():
-            form.save()
+            entry = form.save(commit=False)
+            entry.user = request.user  # Assign current logged-in user
+            entry.save()
             messages.success(request, "Record Created")
             return redirect('dashboard')
-    context={'form':form}
-    return render(request, 'crud_app/add_record.html', context=context)
+    else:
+        form = Add_record()
+    return render(request, 'crud_app/add_record.html', {'form':form})
 
 
 #update record

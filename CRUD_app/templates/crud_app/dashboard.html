@@ -22,12 +22,10 @@
             <tr>
 
                 <th scope="col">ID</th>
-
-                <th scope="col">Content</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
                 <th scope="col">Title</th>
-                <th scope="col">Date</th>
+                <th scope="col">Content</th> 
+                <th scope="col">Status</th>
+                <th scope="col">Created at</th>
                 <th scope="col">View</th>
 
             </tr>
@@ -41,10 +39,10 @@
             <tr>
                 <td>{{record.id}}</td>
                 <td>{{record.title}}</td>
-                <td>{{record.first_name}}</td>
-                <td>{{record.last_name}}</td>
                 <td>{{record.content}}</td>
-                <td>{{record.date}}</td>
+                <td>{{record.status}}</td>
+                <td>{{record.created_at}}</td>
+                
                 <td><a class="btn btn-info btn-sm" href="{% url 'view_record' record.id %}"><i
                             class="fa-solid fa-eye"></i></a></td>
             </tr>
